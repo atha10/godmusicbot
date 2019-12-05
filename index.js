@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const token = 'NjQ3NzUxODgxMDAyNzEzMTEw.XefH3g.mNhE5W_nDt4z_S2a0HH0pdmy7m8';
+//const token = 'NjQ3NzUxODgxMDAyNzEzMTEw.XefH3g.mNhE5W_nDt4z_S2a0HH0pdmy7m8';
 const Client = new Discord.Client();
 const PREFIX = ',';
 const search = require('youtube-search');
@@ -45,4 +45,4 @@ Client.on('message', async message => {
     }
  
 });
-Client.login(token);
+Client.login(process.env.TOKEN);
