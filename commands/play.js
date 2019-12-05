@@ -24,7 +24,7 @@ module.exports = {
        async  function play(guild, song){
         const ytdl = require('ytdl-core');
                 var connection = await voiceChannel.join();
-                const dispatcher = connection.playStream(ytdl(song.url, {quality: "highestaudio"}))
+                const dispatcher = connection.playStream(ytdl(song.url, {filter: "audioonly"}))
                     .on('error', error => {
                         console.error(error);
                     });
