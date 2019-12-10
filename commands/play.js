@@ -48,7 +48,7 @@ module.exports = {
                     queue.delete(message.guild.id);
                     return message.channel.send(`I could not join the voice channel: ${error}`);
                 }
-            } else {
+            } else if(serverQueue) {
                 serverQueue.songs.push(song);
                 console.log(serverQueue.songs);
                 if (playlist) return undefined;
