@@ -6,7 +6,7 @@ module.exports = {
        
         const queue = new Map();
          dj();
-    async function dj(){
+    async function dj(playlist = false){
           
         const voiceChannel = message.member.voiceChannel;
         if (!voiceChannel) return message.channel.send('You need to be in a voice channel to play music!');
@@ -49,7 +49,7 @@ module.exports = {
                     return message.channel.send(`I could not join the voice channel: ${error}`);
                 }
             } else {
-                serverQueue.songs.push(song);
+                 queueConstruct.songs.push(song);
                 console.log(serverQueue.songs);
                 if (playlist) return undefined;
             var embed = new Discord.RichEmbed()
