@@ -3,18 +3,17 @@ module.exports = {
     description: "says music",
     execute(message,songInfo){
         const Discord = require('discord.js');
-       
-        const queue = new Map();
+        const queue = new Map();  
          dj();
-    async function dj(playlist = false){
-          
+    async function dj(){
+        
         const voiceChannel = message.member.voiceChannel;
         if (!voiceChannel) return message.channel.send('You need to be in a voice channel to play music!');
         const permissions = voiceChannel.permissionsFor(message.client.user);
         if (!permissions.has('CONNECT') || !permissions.has('SPEAK')) {
             return message.channel.send('I need the permissions to join and speak in your voice channel!');
         }
-        const serverQueue = queue.get(message.guild.id);
+        
            // console.log(video);
         const youtubeResults = songInfo.results;
         const url2 = youtubeResults.map(result => {
@@ -27,6 +26,7 @@ module.exports = {
                 title: title2,
                 url: url2,
             }
+            const serverQueue = queue.get(message.guild.id);
              if (!serverQueue) {
                 const queueConstruct = {
                     textChannel: message.channel,
@@ -49,7 +49,7 @@ module.exports = {
                     return message.channel.send(`I could not join the voice channel: ${error}`);
                 }
             } else {
-                 queueConstruct.songs.push(song);
+                serverQueue.songs.push(song);
                 console.log(serverQueue.songs);
                 if (playlist) return undefined;
             var embed = new Discord.RichEmbed()
